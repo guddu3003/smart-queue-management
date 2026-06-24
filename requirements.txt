@@ -35,7 +35,6 @@ packaging==25.0
 pandas==2.3.3
 pillow==11.3.0
 protobuf==6.33.0
-pyarrow==21.0.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pydantic==2.12.3
