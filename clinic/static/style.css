@@ -1,0 +1,87 @@
+:root {
+    --primary-blue: #0A369D;
+    --bg-light: #F4F7FE;
+    --text-dark: #2B3674;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    padding: 20px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-card, .card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.05);
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 20px;
+}
+
+.now-serving-card {
+    background: linear-gradient(135deg, var(--primary-blue), #1B4DD5);
+    color: white;
+    text-align: center;
+}
+
+.massive-text {
+    font-size: 4rem;
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.badge.emergency { color: red; background: #ffe6e6; padding: 5px 10px; border-radius: 20px; }
+.badge.normal { color: blue; background: #e6e6ff; padding: 5px 10px; border-radius: 20px; }
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.btn-primary, .btn-secondary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary { background: var(--primary-blue); color: white; }
+.btn-secondary { background: white; color: var(--primary-blue); }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartQueue Dashboard</title>
+    <link rel="stylesheet" href="/static/clinic/css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <header>
+                <h1>Good morning, Receptionist 👋</h1>
+            </header>
+
+            <div class="stats-row">
+                <div class="stat-card">Total Patients <br> <strong>86</strong></div>
+                <div class="stat-card">Avg. Wait Time <br> <strong>24 min</strong></div>
+                <div class="stat-card">In Queue <br> <strong id="live-queue-count">--</strong></div>
+            </div>
+
+            <div class="grid-layout">
+                <div class="card add-patient-card">
+                    <h3>Add New Patient</h3>
+                    <form id="addPatientForm">
+                        <input type="text" id="pName" placeholder="Enter full name" required>
+                        <input type="text" id="pPhone" placeholder="Enter phone number">
+                        <select id="pPriority">
+                            <option value="Normal">Normal</option>
+                            <option value="Emergency">Emergency</option>
+                        </select>
+                        <button type="submit" class="btn-primary">Generate Token</button>
+                    </form>
+                </div>
+
+                <div class="card now-serving-card">
+                    <h3>Now Serving</h3>
+                    <h1 id="current-token" class="massive-text">--</h1>
+                    <p id="current-name">Waiting...</p>
+                    <button id="callNextBtn" class="btn-secondary">Call Next</button>
+                </div>
+
+                <div class="card ai-card">
+                    <h3>🤖 AI Queue Assistant</h3>
+                    <p>Predicted wait: {{ ai_data.predicted_wait }}</p>
+                    <p>High rush expected: {{ ai_data.high_rush }}</p>
+                </div>
+            </div>
+
+            <div class="card queue-list">
+                <h3>Queue List</h3>
+                <table id="queueTable">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Patient Name</th>
+                            <th>Priority</th>
+                            <th>Est. Wait</th>
+                        </tr>
+                    </thead>
+                    <tbody id="queueTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="/static/clinic/js/main.js"></script>
+</body>
+</html>
