@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-hackathon-demo-key-change-later'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] # Allows Render to host it
 
 # Application definition
 INSTALLED_APPS = [
@@ -20,11 +20,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'clinic',  # Your app is registered here!
+    'corsheaders',      # Added for Frontend-Backend connection
+    'rest_framework',   # Added for API functionality
+    'clinic',           # Your app is registered here!
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    # Added for Render Deployment
+    'corsheaders.middleware.CorsMiddleware',         # Added for Vercel Frontend
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -38,7 +42,7 @@ ROOT_URLCONF = 'smartqueue_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [], # You can add global template folders here later if needed
+        'DIRS': [], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -53,16 +57,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smartqueue_project.wsgi.application'
 
+# FIXED: Removed Djongo. Using default SQLite for Django admin/sessions.
+# Your actual queue data will be handled by pymongo directly in views.py!
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'smartqueue',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017/smartqueue'
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Hackathon Lifesaver: Allows your Vercel URL to talk to this Render backend instantly.
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'

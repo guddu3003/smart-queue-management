@@ -1,9 +1,10 @@
+/** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class', // Dark mode enable rakhne ke liye
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class', // <-- THIS is what makes Dark Mode work!
   theme: {
     extend: {},
   },
