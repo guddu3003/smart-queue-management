@@ -16,7 +16,7 @@ export default function SmartQueue() {
   // API URL Logic for Local and Deployment
   const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://127.0.0.1:8000/api' 
-    : 'https://your-backend-name.onrender.com/api'; // REPLACE THIS LATER WHEN YOU DEPLOY BACKEND
+    : 'https://smart-queue-management-hk45.onrender.com/api'; // REPLACE THIS LATER WHEN YOU DEPLOY BACKEND
 
   const [nowServing, setNowServing] = useState({ token: 'A24', name: 'Rahul Sharma', room: 'Consultation Room 1' });
   const [queue, setQueue] = useState([
